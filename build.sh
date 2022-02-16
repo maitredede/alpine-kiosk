@@ -9,7 +9,7 @@ TAG_BUILDER="ghcr.io/raspi-alpine/builder"
 
 docker pull ${TAG_BUILDER}
 
-mkdir -p ${PWD}/input ${PWD}/output ${PWD}/work
+mkdir -p ${PWD}/input ${PWD}/output ${PWD}/work ${PWD}/cache
 
 #https://gitlab.com/raspi-alpine/builder#arch-variable
 # ARCH="armhf"
@@ -18,6 +18,7 @@ ARCH="aarch64"
 
 # docker run --privileged --rm multiarch/qemu-user-static --persistent yes || true
 docker run --rm -it \
+    -v ${PWD}/cache:/cache \
     -v ${PWD}/input:/input \
     -v ${PWD}/output:/output \
     -v ${PWD}/work:/work \
@@ -35,4 +36,5 @@ docker run --rm -it \
     --env LIBNFC="libnfc-1.8.0" \
     --env LIBFREEFARE="master" \
     --env USE_CACHE="true" \
+    --env CACHE_PATH="/cache" \
     ${TAG_BUILDER}
