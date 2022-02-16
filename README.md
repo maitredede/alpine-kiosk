@@ -1,0 +1,1 @@
+POC of Raspberry Pi Kiosk based on Alpine linux built with [Raspi Alpine Builder](https://gitlab.com/raspi-alpine/builder).

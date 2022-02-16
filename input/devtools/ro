@@ -1,0 +1,5 @@
+#!/bin/ash
+
+set -euo pipefail
+
+mount -oremount,ro /dev/root /
