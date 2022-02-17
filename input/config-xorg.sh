@@ -8,8 +8,7 @@ colour_echo ">>> Installing Xorg"
 # https://github.com/alpinelinux/alpine-conf/blob/master/setup-xorg-base.in
 # chroot_exec apk add --no-cache xorg-server xf86-input-libinput mesa xf86-video-fbdev xset eudev eudev-openrc
 chroot_exec apk add --no-cache xorg-server xf86-input-libinput xf86-input-evdev mesa xf86-video-fbdev xset
-# chroot_exec rc-update del mdev default
-# chroot_exec rc-update add udev-postmount default
+chroot_exec setup-udev -n
 
 # mkdir -p ${ROOTFS_PATH}/var/log/
 # ln -fs /data/var/log/Xorg.0.log ${ROOTFS_PATH}/var/log/Xorg.0.log

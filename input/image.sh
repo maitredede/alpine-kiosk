@@ -28,7 +28,7 @@ cat >> ${DATAFS_PATH}/root/.ssh/authorized_keys << EOF
 EOF
 
 # Cache
-export CACHE_PATH=${INPUT_PATH}/.cache-${ARCH}
+#export CACHE_PATH=${INPUT_PATH}/.cache-${ARCH}
 if [ "${USE_CACHE}" != "true" ]
 then
     rm -rf ${CACHE_PATH}
@@ -46,3 +46,5 @@ mkdir -p ${CACHE_PATH}
 . ${INPUT_PATH}/config-gadget.sh
 . ${INPUT_PATH}/config-kiosk.sh
 . ${INPUT_PATH}/config-devtools.sh
+
+rm -f ${ROOTFS_PATH}/bin/bbsuid

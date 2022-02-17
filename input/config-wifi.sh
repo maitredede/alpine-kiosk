@@ -35,6 +35,6 @@ ap_scan=1
 autoscan=periodic:10
 disable_scan_offload=1
 EOF
-chroot_exec rc-update add wpa_cli boot
+#chroot_exec rc-update add wpa_cli boot
 
 #wpa_supplicant -u -iwlan0 -c/etc/wpa_supplicant/wpa_supplicant.conf
