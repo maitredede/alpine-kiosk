@@ -29,4 +29,4 @@ echo "snd_bcm2835" >> "${ROOTFS_PATH}"/etc/modules
 # https://wiki.alpinelinux.org/wiki/ALSA
 chroot_exec apk add --no-cache alsa-utils alsa-utils-doc alsa-lib alsaconf alsa-ucm-conf
 chroot_exec addgroup root audio
-chroot_exec rc-update add alsa
+chroot_exec rc-update add alsa default

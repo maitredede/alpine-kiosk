@@ -4,7 +4,8 @@ set -eEuo pipefail
 
 # https://github.com/raspi-alpine/builder
 
-TAG_BUILDER="ghcr.io/raspi-alpine/builder"
+TAG_BUILDER="registry.gitlab.com/raspi-alpine/builder/master"
+#TAG_BUILDER="ghcr.io/raspi-alpine/builder"
 # TAG_BUILDER="ghcr.io/raspi-alpine/builder:20220205_090949"
 
 docker pull ${TAG_BUILDER}
@@ -18,7 +19,6 @@ ARCH="aarch64"
 
 # docker run --privileged --rm multiarch/qemu-user-static --persistent yes || true
 docker run --rm -it \
-    -v ${PWD}/cache:/cache \
     -v ${PWD}/input:/input \
     -v ${PWD}/output:/output \
     -v ${PWD}/work:/work \
@@ -36,5 +36,5 @@ docker run --rm -it \
     --env LIBNFC="libnfc-1.8.0" \
     --env LIBFREEFARE="master" \
     --env USE_CACHE="true" \
-    --env CACHE_PATH="/cache" \
+    --env CACHE_PATH=/input/.cache-${ARCH} \
     ${TAG_BUILDER}
