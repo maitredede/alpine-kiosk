@@ -39,5 +39,4 @@ docker run --rm -it \
     --env LIBFREEFARE="master" \
     --env USE_CACHE="true" \
     --env DEV="eudev" \
-    -v ${PWD}/40-dev.sh:/resources/scripts/stages/10/40-dev.sh \
     ${TAG_BUILDER}
