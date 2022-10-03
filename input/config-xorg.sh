@@ -6,9 +6,15 @@ colour_echo ">>> Installing Xorg"
 
 # xorg base
 # https://github.com/alpinelinux/alpine-conf/blob/master/setup-xorg-base.in
-# chroot_exec apk add --no-cache xorg-server xf86-input-libinput mesa xf86-video-fbdev xset eudev eudev-openrc
-chroot_exec apk add --no-cache xorg-server xf86-input-libinput xf86-input-evdev mesa xf86-video-fbdev xset
-chroot_exec setup-udev -n
+# chroot_exec apk add xorg-server xf86-input-libinput mesa xf86-video-fbdev xset eudev eudev-openrc
+# chroot_exec apk add xorg-server xf86-input-libinput mesa
+
+# from setup-xorg-base : https://github.com/alpinelinux/alpine-conf/blob/master/setup-xorg-base.in
+chroot_exec apk add xorg-server xf86-input-libinput eudev mesa
+# chroot_exec setup-udev -n
+
+chroot_exec apk add xf86-input-evdev xf86-video-fbdev xset
+# chroot_exec setup-udev -n
 
 # mkdir -p ${ROOTFS_PATH}/var/log/
 # ln -fs /data/var/log/Xorg.0.log ${ROOTFS_PATH}/var/log/Xorg.0.log
@@ -25,11 +31,11 @@ EOF
 
 
 # Window manager
-chroot_exec apk add --no-cache bspwm
+chroot_exec apk add bspwm
 # TODO add bspwm configuration
 
 # fonts
-# chroot_exec apk add --no-cache terminus-font ttf-inconsolata ttf-dejavu font-noto ttf-font-awesome font-noto-extra
+# chroot_exec apk add terminus-font ttf-inconsolata ttf-dejavu font-noto ttf-font-awesome font-noto-extra
 
 # Add gstreamer to display youtube videos
-chroot_exec apk add --no-cache gst-libav
+chroot_exec apk add gst-libav

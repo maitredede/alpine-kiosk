@@ -4,8 +4,8 @@ set -eEuo pipefail
 
 # https://github.com/raspi-alpine/builder
 
-TAG_BUILDER="registry.gitlab.com/raspi-alpine/builder/master"
-#TAG_BUILDER="ghcr.io/raspi-alpine/builder"
+# TAG_BUILDER="registry.gitlab.com/raspi-alpine/builder/master"
+TAG_BUILDER="ghcr.io/raspi-alpine/builder"
 # TAG_BUILDER="ghcr.io/raspi-alpine/builder:20220205_090949"
 
 docker pull ${TAG_BUILDER}
@@ -22,12 +22,14 @@ docker run --rm -it \
     -v ${PWD}/input:/input \
     -v ${PWD}/output:/output \
     -v ${PWD}/work:/work \
+    --env CACHE_PATH=/cache \
+    -v ${PWD}/cache:/cache \
     --env ALPINE_BRANCH=edge \
     --env ALPINE_MIRROR=http://mirror.lagoon.nc/alpine \
     --env ARCH=${ARCH} \
     --env DEFAULT_HOSTNAME=thepigadget \
     --env DEFAULT_TIMEZONE=Pacific/Noumea \
-    --env DEFAULT_ROOT_PASSWORD=proot \
+    --env DEFAULT_ROOT_PASSWORD=prlaoot \
     --env DEFAULT_KERNEL_MODULES="*" \
     --env SIZE_ROOT_PART="2G" \
     --env SIZE_ROOT_FS="2000M" \
@@ -36,5 +38,6 @@ docker run --rm -it \
     --env LIBNFC="libnfc-1.8.0" \
     --env LIBFREEFARE="master" \
     --env USE_CACHE="true" \
-    --env CACHE_PATH=/input/.cache-${ARCH} \
+    --env DEV="eudev" \
+    -v ${PWD}/40-dev.sh:/resources/scripts/stages/10/40-dev.sh \
     ${TAG_BUILDER}

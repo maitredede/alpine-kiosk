@@ -21,7 +21,7 @@ cp ${INPUT_PATH}/gadget-network.sh ${ROOTFS_PATH}/usr/bin/gadget-network.sh
 cp ${INPUT_PATH}/init-gadget.sh ${ROOTFS_PATH}/etc/init.d/gadget
 chroot_exec rc-update add gadget default
 
-chroot_exec apk add --no-cache dnsmasq
+chroot_exec apk add dnsmasq
 # chroot_exec rc-update delete dnsmasq default
 cp ${INPUT_PATH}/init-gadget-link.sh ${ROOTFS_PATH}/etc/init.d/gadget-link
 chroot_exec rc-update add gadget-link default

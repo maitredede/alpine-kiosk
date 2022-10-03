@@ -13,7 +13,7 @@ SRC_FREEFARE=${WRKDIR}/src-libfreefare
 SRC_APP=${WRKDIR}/app
 RESULT=${WRKDIR}/result
 
-apk add --no-cache --virtual .build-deps git build-base autoconf automake make linux-headers gettext libtool libusb-dev libusb-compat-dev pkgconf bsd-compat-headers openssl-dev go libcec-dev
+apk add --virtual .build-deps git build-base autoconf automake make linux-headers gettext libtool libusb-dev libusb-compat-dev pkgconf bsd-compat-headers openssl-dev go libcec-dev
 
 cd ${SRC_NFC}
 # git clone https://github.com/nfc-tools/libnfc.git . --depth=1 --recursive --branch ${LIBNFC}

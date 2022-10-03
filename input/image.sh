@@ -19,9 +19,9 @@ export LIBFREEFARE=${LIBFREEFARE:-"master"}
 export X11VNC_PASSWORD=${X11VNC_PASSWORD:-"vncproot"}
 ################################################################
 
-chroot_exec apk upgrade --no-cache --available
+chroot_exec apk upgrade --available
 # raspberrypi
-chroot_exec apk add --no-cache dropbear-scp haveged nano
+chroot_exec apk add dropbear-scp haveged nano
 chroot_exec rc-update add haveged boot
 mkdir -p ${DATAFS_PATH}/root/.ssh
 cat >> ${DATAFS_PATH}/root/.ssh/authorized_keys << EOF

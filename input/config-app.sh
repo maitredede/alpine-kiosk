@@ -12,11 +12,11 @@ WRKDIR=${ROOTFS_PATH}/wrk
 SRC_NFC=${WRKDIR}/src-libnfc
 SRC_FREEFARE=${WRKDIR}/src-libfreefare
 SRC_APP=${WRKDIR}/app
-RESULT_CACHE=${CACHE_PATH}/app-cache
+RESULT_CACHE=${CACHE_PATH}/${ARCH}/app-cache
 RESULT=${WRKDIR}/result
 
-CACHE_NFC_SRC=${CACHE_PATH}/src-libnfc
-CACHE_FREEFARE_SRC=${CACHE_PATH}/src-libfreefare
+CACHE_NFC_SRC=${CACHE_PATH}/${ARCH}/src-libnfc
+CACHE_FREEFARE_SRC=${CACHE_PATH}/${ARCH}/src-libfreefare
 
 colour_echo ">>> Installing NFC application"
 
@@ -53,7 +53,7 @@ else
     rm -r ${WRKDIR}
 fi
 
-chroot_exec apk add --no-cache libusb libusb-compat usbutils libcec
+chroot_exec apk add libusb libusb-compat usbutils libcec
 
 cp ${INPUT_PATH}/init-nfc-websocket.sh "$ROOTFS_PATH"/etc/init.d/nfc-websocket
 chroot_exec rc-update add nfc-websocket default

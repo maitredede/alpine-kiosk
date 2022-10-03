@@ -5,7 +5,7 @@ set -euo pipefail
 colour_echo ">>> Installing wifi"
 
 # wifi stuff
-chroot_exec apk add --no-cache wireless-tools wpa_supplicant
+chroot_exec apk add wireless-tools wpa_supplicant
 chroot_exec rc-update add wpa_supplicant default
 echo "brcmfmac" >> "$ROOTFS_PATH"/etc/modules
 
